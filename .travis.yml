@@ -16,9 +16,14 @@ script:
 - npm run lint
 - xvfb-run polymer test --plugin local
 - if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then polymer test --plugin sauce --job-name
-  "projects-list-consumer-mixin:${TRAVIS_BRANCH}" --build-number=${TRAVIS_BUILD_NUMBER}; fi
+  "projects-list-consumer-mixin:${TRAVIS_BRANCH}" --build-number=${TRAVIS_BUILD_NUMBER};
+  fi
 cache:
   directories:
   - node_modules
 after_success:
 - node tasks/ci.js
+env:
+  global:
+  - secure: kcfPjQQbbYXY6YM1v9nxH0bfnIK4l1jXANyOpecKe7ZQ9hgmPukqhVqmfNcFf7ExzuD8CMGARpqj7VN5S1S4KiG0ImZgftnQdtrX26cIhpDqu5tRputySWEFBbxh30ef+vA1VVuWAiY17jecfoTfMZ+Yd+EI4q2Q1RTuD8J1XormasnmNGVhwRmjGvWzqgHowDHdxEy1bXuMgA0ELm0d06WQ3Qji3+KUknVcYjvU6tUL3c7aPU12rNF2OtFlCOsYdf4vIlPeWsQ2Y9IJPwwN4nZ+4fsLGT6LZri7LrTFBMAtqSNqLMaKC4EJ6k4v2M5FaUBTbzrzs0REwBLtCdgzSYtbaKFO6gKnTdAy36sUSmZKVZAwtesZ9gEKOjDgdxdHt+ZltD0KEUZQufe2Fz6HiD2I6GkQ7JMf5uuqfxMfgpkn8VNs5gRqudAZonvk1oDnoyqJCijRbxtjfa8Qfj8LsH76MPSiCxxtTqOO2H5ZTj1e1OR9jT0qHJdj5M5ckdAe88URK+a71V85ejKL2EHnNx1mvBX+PCBWfDFSVwuQjZ0NXahUw4sD3NHNV1/g7jIhqnkzAgzCIdrS+8PTEOmg1PZA9EXkEpizDnKp73heC0nkBZF2lj//fcBvizRdeBtM0NvXZ4QqeRRQyyHz+CDaw4djnNUmtiy0O0uh4y41M4s=
+  - secure: S/I4Ieo18FB0H2JCP33KZUTgG3LoqxvYaxMBzsVIUDG3C0Aoc935+ElI7jd7uea+RWrgjFq+rJ4MYY6Gv8iFg3IVOCIFm18BOKEzWwXd1/KjG8pAt2/ubYaCGVM1PhUjDy8JOdS2a4wxLWFom/BffZqcdlJpVDaK8qGAG/IVothznIBOApXJMkdwTZbZS7SKqVuHWtkLCIlMme3pPio5aSmrQk79Q87qHdXMjY1ZOH4jIwS0IO7TWzxteVBgknQMYlO8cw1JgjZcJyPaRUw5zTzZGLKd1P1fuPBxS7YNz+HgxE/S+Y85Hk/2zuxCklxYDaVYgd+4+IB7kIMF6DsnVTHGMsoRqMEWRFp6IUf0F5+HdJaWY5sCvZ9WTQ34dYLk1KggZ2Q8ciyVsjHFsF9gmqWOxUscJjHaXKj4a8I9gwEn5lxgmWuu9HBhoUWglJ7uyUAOSc06vl0oSx53dXqGJz3+vL29aRIxphA1tGMqT54KMu9/KQKimy+KPUudFD5khOt0hnulTUG7ZvCM+gln8lQnpNVXMitQFzN8rPP9oaFpbj9fp9jRWcJwf1gGXD/AeX6F6rlj5bzFRJMsgVYzkQ7UAyoYSEq05LAjEqZ6rE7VcEew9JjemUZSXUYHedKwweASHTCkMLOziW8YS/EBovmBrGuvOdx4s3sX2IKDpZw=
