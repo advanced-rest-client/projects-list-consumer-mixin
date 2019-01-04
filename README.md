@@ -4,23 +4,10 @@
 
 # projects-list-consumer-mixin
 
-A mixin with common methods for (legacy) projects list
+A mixin with common methods for (legacy) projects list.
 
-<!---
-```
-<custom-element-demo>
-  <template>
-    <link rel="import" href="projects-list-consumer-mixin.html">
-    <next-code-block></next-code-block>
-  </template>
-</custom-element-demo>
-```
--->
-
-```html
-<projects-list-consumer-mixin></projects-list-consumer-mixin>
-```
+It is intended to be used in ARC components for saved requests list and for saved editor dialog.
 
 ### API components
 
-This components is a part of API components ecosystem: https://elements.advancedrestclient.com/
+This components is a part of [API components ecosystem](https://elements.advancedrestclient.com/)
