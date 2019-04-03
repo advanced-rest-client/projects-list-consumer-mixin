@@ -1,29 +1,49 @@
 {
-  "name": "@advanced-rest-client/projects-list-consumer-mixin",
   "description": "A mixin with common methods for (legacy) projects list",
-  "version": "2.0.0",
+  "keywords": [
+    "api-components"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/advanced-rest-client/projects-list-consumer-mixin.git"
+  },
+  "name": "@advanced-rest-client/projects-list-consumer-mixin",
+  "version": "3.0.0-preview.1",
   "license": "Apache-2.0",
-  "main": "projects-list-consumer-mixin.html",
+  "main": "projects-list-consumer-mixin.js",
   "authors": [
     "Pawel Psztyc",
     "The Advanced REST client authors <arc@mulesoft.com>"
   ],
   "devDependencies": {
-    "@polymer/gen-typescript-declarations": "^1.6.0"
+    "@advanced-rest-client/arc-data-generator": "^3.0.0-preview.1",
+    "@advanced-rest-client/arc-models": "^3.0.0-preview.3",
+    "@polymer/gen-typescript-declarations": "^1.6.0",
+    "@polymer/iron-component-page": "^4.0.0",
+    "@polymer/iron-demo-helpers": "^3.0.0",
+    "@polymer/iron-test-helpers": "^3.0.0",
+    "@polymer/test-fixture": "^4.0.2",
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "sinon": "^7.2.3",
+    "wct-mocha": "^1.0.0"
   },
-  "private": false,
   "scripts": {
     "lint": "polymer lint projects-list-consumer-mixin.html",
     "test-sauce": "polymer test --plugin sauce --job-name \"projects-list-consumer-mixin:local-test\"",
     "test": "polymer test --plugin local",
     "update-types": "gen-typescript-declarations --deleteExisting --outDir ."
   },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/advanced-rest-client/projects-list-consumer-mixin.git"
-  },
   "bugs": {
     "url": "https://github.com/advanced-rest-client/projects-list-consumer-mixin/issues",
     "email": "arc@mulesoft.com"
+  },
+  "contributors": [
+    "Pawel Psztyc",
+    "The Advanced REST client authors <arc@mulesoft.com>"
+  ],
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0"
   }
 }

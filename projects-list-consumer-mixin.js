@@ -1,4 +1,4 @@
-<!--
+/**
 @license
 Copyright 2018 The Advanced REST client authors <arc@mulesoft.com>
 Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -10,18 +10,9 @@ distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
 WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 License for the specific language governing permissions and limitations under
 the License.
--->
-<link rel="import" href="../polymer/lib/utils/mixin.html">
-<link rel="import" href="../polymer/lib/utils/render-status.html">
-<script>
-(function(global) {
-'use strict';
-if (!global.ArcComponents) {
-  /**
-   * @namespace ArcComponents
-   */
-  global.ArcComponents = {};
-}
+*/
+import {dedupingMixin} from '../../@polymer/polymer/lib/utils/mixin.js';
+import {afterNextRender} from '../../@polymer/polymer/lib/utils/render-status.js';
 /**
  * A mixin with common methods for (legacy) projects list.
  * Use it for components that reads list of projects and requires to keep track
@@ -31,7 +22,7 @@ if (!global.ArcComponents) {
  * @mixinFunction
  * @memberof ArcComponents
  */
-global.ArcComponents.ProjectsListConsumerMixin = Polymer.dedupingMixin((base) => {
+export const ProjectsListConsumerMixin = dedupingMixin((base) => {
   /**
    * @polymer
    * @mixinClass
@@ -132,7 +123,7 @@ global.ArcComponents.ProjectsListConsumerMixin = Polymer.dedupingMixin((base) =>
         return;
       }
       this.__refreshingDebouncer = true;
-      Polymer.RenderStatus.afterNextRender(this, () => {
+      afterNextRender(this, () => {
         this.__refreshingDebouncer = false;
         this._updateProjectsList();
       });
@@ -214,7 +205,7 @@ global.ArcComponents.ProjectsListConsumerMixin = Polymer.dedupingMixin((base) =>
       .then((result) => result.sort(this._projectsSortFn))
       .then((result) => {
         this.set('projects', result);
-        Polymer.RenderStatus.afterNextRender(this, () => {
+        afterNextRender(this, () => {
           if (this.notifyResize) {
             this.notifyResize();
           }
@@ -323,6 +314,3 @@ global.ArcComponents.ProjectsListConsumerMixin = Polymer.dedupingMixin((base) =>
   }
   return ProjectsListConsumerMixin;
 });
-})(window);
-</script>
-</dom-module>

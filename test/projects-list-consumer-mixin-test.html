@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
   <title>projects-list-consumer-mixin test</title>
-  <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
-  <script src="../../web-component-tester/browser.js"></script>
-  <link rel="import" href="../../arc-data-generator/arc-data-generator.html">
-  <link rel="import" href="../../arc-models/project-model.html">
-  <link rel="import" href="../../arc-models/request-model.html">
-  <script src="../../chance/dist/chance.min.js"></script>
-  <link rel="import" href="test-element.html">
+
+  <script src="../../../@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+  <script src="../../../@polymer/test-fixture/test-fixture.js"></script>
+  <script src="../../../mocha/mocha.js"></script>
+  <script src="../../../chai/chai.js"></script>
+  <script src="../../../wct-mocha/wct-mocha.js"></script>
+
 </head>
 <body>
   <test-fixture id="NoModel">
@@ -35,8 +35,14 @@
     </template>
   </test-fixture>
 
-  <script>
-  /* global DataGenerator, chance */
+  <script type="module">
+  import '../../../chance/dist/chance.min.js';
+  import {DataGenerator} from '../../../@advanced-rest-client/arc-data-generator/arc-data-generator.js';
+  import '../../../@advanced-rest-client/arc-models/project-model.js';
+  import '../../../@advanced-rest-client/arc-models/request-model.js';
+  import './test-element.js';
+  import {afterNextRender} from '../../../@polymer/polymer/lib/utils/render-status.js';
+  /* global chance */
   suite('projects-list-consumer-mixin', () => {
     suite('_computeHasProjects()', () => {
       let element;
@@ -362,7 +368,7 @@
         let called = false;
         element._updateProjectsList = () => called = true;
         element.refreshProjects();
-        Polymer.RenderStatus.afterNextRender(this, () => {
+        afterNextRender(window, () => {
           assert.isTrue(called);
           done();
         });
@@ -387,7 +393,7 @@
         element._updateProjectsList = () => called = true;
         element.__refreshingDebouncer = true;
         element.refreshProjects();
-        Polymer.RenderStatus.afterNextRender(this, () => {
+        afterNextRender(window, () => {
           assert.isFalse(called);
           done();
         });
