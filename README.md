@@ -22,34 +22,31 @@ This components is a part of [API components ecosystem](https://elements.advance
 npm install --save @advanced-rest-client/projects-list-consumer-mixin
 ```
 
-### In a Polymer 3 element
+### In a LitElement
 
 ```js
-import {PolymerElement, html} from './node_modules/@polymer/polymer/polymer-element.js';
-import {ProjectsListConsumerMixin} from './node_modules/@advanced-rest-client/projects-list-consumer-mixin/projects-list-consumer-mixin.js';
+import { LitElement, html } from 'lit-element';
+import { ProjectsListConsumerMixin } from '@advanced-rest-client/projects-list-consumer-mixin/projects-list-consumer-mixin.js';
 
-class SampleElement extends ProjectsListConsumerMixin(PolymerElement) {
+class SampleElement extends ProjectsListConsumerMixin(LitElement) {
+  render() {
+    return html`
+    ${(this.projects || []).map((project) => html`...`)}
+    `;
+  }
 }
 customElements.define('sample-element', SampleElement);
 ```
 
-### Installation
+## Development
 
 ```sh
 git clone https://github.com/advanced-rest-client/projects-list-consumer-mixin
-cd api-url-editor
+cd projects-list-consumer-mixin
 npm install
-npm install -g polymer-cli
 ```
 
-### Running the demo locally
-
+## Running the tests
 ```sh
-polymer serve --npm
-open http://127.0.0.1:<port>/demo/
-```
-
-### Running the tests
-```sh
-polymer test --npm
+npm test
 ```
