@@ -1,29 +1,69 @@
 {
   "name": "@advanced-rest-client/projects-list-consumer-mixin",
   "description": "A mixin with common methods for (legacy) projects list",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "license": "Apache-2.0",
-  "main": "projects-list-consumer-mixin.html",
+  "main": "projects-list-consumer-mixin.js",
+  "keywords": [
+    "advanced-rest-client",
+    "projects",
+    "api-projects"
+  ],
   "authors": [
-    "Pawel Psztyc",
+    "Pawel Psztyc"
+  ],
+  "contributors": [
     "The Advanced REST client authors <arc@mulesoft.com>"
   ],
-  "devDependencies": {
-    "@polymer/gen-typescript-declarations": "^1.6.0"
-  },
-  "private": false,
-  "scripts": {
-    "lint": "polymer lint projects-list-consumer-mixin.html",
-    "test-sauce": "polymer test --plugin sauce --job-name \"projects-list-consumer-mixin:local-test\"",
-    "test": "polymer test --plugin local",
-    "update-types": "gen-typescript-declarations --deleteExisting --outDir ."
+  "bugs": {
+    "url": "https://github.com/advanced-rest-client/projects-list-consumer-mixin/issues",
+    "email": "arc@mulesoft.com"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/advanced-rest-client/projects-list-consumer-mixin.git"
   },
-  "bugs": {
-    "url": "https://github.com/advanced-rest-client/projects-list-consumer-mixin/issues",
-    "email": "arc@mulesoft.com"
+  "dependencies": {
+    "@advanced-rest-client/arc-models": "^3.0.0-preview.7"
+  },
+  "devDependencies": {
+    "@advanced-rest-client/arc-data-generator": "^3.0.3",
+    "@advanced-rest-client/eslint-config": "^1.1.2",
+    "@advanced-rest-client/prettier-config": "^0.1.0",
+    "@advanced-rest-client/testing-karma-sl": "^1.0.4",
+    "@commitlint/cli": "^8.1.0",
+    "@commitlint/config-conventional": "^7.0.0",
+    "@open-wc/testing": "^2.3.3",
+    "@open-wc/testing-karma": "^3.1.29",
+    "@polymer/gen-typescript-declarations": "^1.6.2",
+    "@polymer/iron-test-helpers": "^3.0.0",
+    "deepmerge": "^4.0.0",
+    "es-dev-server": "^1.16.0",
+    "husky": "^1.0.0",
+    "karma": "^4.3.0",
+    "lint-staged": "^8.0.0",
+    "lit-element": "^2.2.1",
+    "sinon": "^7.4.1"
+  },
+  "scripts": {
+    "test": "karma start --coverage",
+    "update-types": "gen-typescript-declarations --deleteExisting --outDir .",
+    "lint:eslint": "eslint --ext .js,.html .",
+    "format:eslint": "eslint --ext .js,.html . --fix",
+    "lint:prettier": "prettier \"**/*.js\" --list-different || (echo '↑↑ these files are not prettier formatted ↑↑' && exit 1)",
+    "format:prettier": "prettier \"**/*.js\" --write",
+    "lint": "npm run lint:eslint && npm run lint:prettier",
+    "format": "npm run format:eslint && npm run format:prettier",
+    "test:watch": "karma start --auto-watch=true --single-run=false",
+    "test:legacy": "karma start --compatibility all --coverage",
+    "test:legacy:watch": "karma start --compatibility all --auto-watch=true --single-run=false",
+    "test:sl": "karma start karma.sl.config.js --compatibility all --coverage",
+    "generate-model": "node demo/model.js"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   }
 }
