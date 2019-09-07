@@ -256,7 +256,10 @@ export const ProjectsListConsumerMixin = (base) => class extends base {
     const result = [];
     projects.forEach((item) => {
       if (item.name) {
-        result[result.length] = item.name;
+        result[result.length] = {
+          value: item.name,
+          id: item._id
+        };
       }
     });
     return result;
@@ -303,10 +306,9 @@ export const ProjectsListConsumerMixin = (base) => class extends base {
       if (!selected) {
         continue;
       }
-      const lowerSelected = selected.toLowerCase();
       let hasProject = false;
       for (let j = 0; j < projectsLength; j++) {
-        if (projects[j].name.toLowerCase() === lowerSelected) {
+        if (projects[j]._id === selected) {
           result.existing.push(projects[j]._id);
           hasProject = true;
           break;

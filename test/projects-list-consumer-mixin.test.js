@@ -190,13 +190,23 @@ describe('ProjectsListConsumerMixin', function() {
       assert.isUndefined(result);
     });
 
-    it('Returns list of names', () => {
+    it('Returns list of suggestions', () => {
       const result = element._computeProjectsAutocomplete([{
-        name: 't1'
+        name: 't1',
+        _id: 'i1',
+        order: 1
       }, {
-        name: 't2'
+        name: 't2',
+        _id: 'i2',
+        order: 2
       }]);
-      assert.deepEqual(result, ['t1', 't2']);
+      assert.deepEqual(result, [{
+        value: 't1',
+        id: 'i1'
+      }, {
+        value: 't2',
+        id: 'i2'
+      }]);
     });
   });
 
@@ -248,7 +258,7 @@ describe('ProjectsListConsumerMixin', function() {
         name: 'b',
         _id: 'bId'
       }];
-      const result = element._processSelectedProjectsInfo(['a', 'b']);
+      const result = element._processSelectedProjectsInfo(['aId', 'bId']);
       assert.deepEqual(result.existing, ['aId', 'bId']);
       assert.lengthOf(result.add, 0);
     });

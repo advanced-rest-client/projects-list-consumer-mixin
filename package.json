@@ -1,7 +1,7 @@
 {
   "name": "@advanced-rest-client/projects-list-consumer-mixin",
   "description": "A mixin with common methods for (legacy) projects list",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "license": "Apache-2.0",
   "main": "projects-list-consumer-mixin.js",
   "keywords": [
@@ -34,11 +34,11 @@
     "@commitlint/cli": "^8.1.0",
     "@commitlint/config-conventional": "^7.0.0",
     "@open-wc/testing": "^2.3.3",
-    "@open-wc/testing-karma": "^3.1.29",
+    "@open-wc/testing-karma": "^3.1.32",
     "@polymer/gen-typescript-declarations": "^1.6.2",
     "@polymer/iron-test-helpers": "^3.0.0",
     "deepmerge": "^4.0.0",
-    "es-dev-server": "^1.16.0",
+    "es-dev-server": "^1.17.2",
     "husky": "^1.0.0",
     "karma": "^4.3.0",
     "lint-staged": "^8.0.0",
